@@ -2,7 +2,7 @@
 import cv2
 
 # Lendo a imagem
-img = cv2.imread("../img/Lenna.png")
+img = cv2.imread("../img/input/Lenna.png")
 # [0] = largura, [1] = altura, [2] = canais
 largura, altura, canais = img.shape
 
