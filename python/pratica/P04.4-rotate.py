@@ -1,6 +1,6 @@
 import cv2
 
-image = cv2.imread("../img/input/Lenna.png")
+image = cv2.imread("../../img/input/Lenna.png")
 H, W, C = image.shape  # altura, largura, canais
 
 # Pegando o centro da imagem fazendo divisão inteira //

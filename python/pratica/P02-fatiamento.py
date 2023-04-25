@@ -1,6 +1,6 @@
 import cv2
 
-image_original = cv2.imread('../img/input/Lenna.png')
+image_original = cv2.imread('../../img/input/Lenna.png')
 image_copy = image_original.copy()
 
 # Cria um retângulo azul por toda a largura da imagem

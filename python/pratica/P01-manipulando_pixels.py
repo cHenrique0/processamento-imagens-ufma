@@ -2,7 +2,7 @@
 
 import cv2
 
-img = cv2.imread("../img/input/Lenna.png")
+img = cv2.imread("../../img/input/Lenna.png")
 
 # No OpenCv a ordem das cores é BGR - Blue, Green, Red
 blue, green, red = img[0, 0]  # acessando o pixel (0, 0)

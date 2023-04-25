@@ -1,6 +1,6 @@
 import cv2
 
-original_image = cv2.imread("../img/input/tucano.jpeg")
+original_image = cv2.imread("../../img/input/tucano.jpeg")
 copy_image = original_image.copy()
 
 # Cores

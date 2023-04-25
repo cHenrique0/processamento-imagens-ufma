@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 
-image = cv2.imread("../img/input/Lenna.png")
+image = cv2.imread("../../img/input/Lenna.png")
 H, W, C = image.shape
 
 # Criando uma matriz com as dimensões da imagem original

@@ -1,6 +1,6 @@
 import cv2
 
-image = cv2.imread("../img/input/Lenna.png")
+image = cv2.imread("../../img/input/Lenna.png")
 
 # Invertendo a imagem na horizontal
 flip_h = image[::-1, :]

@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # Carregando a imagem
-image = cv2.imread("../img/input/tucano.jpeg")
+image = cv2.imread("../../img/input/tucano.jpeg")
 
 # Pegando altura e larguras originais
 largura = image.shape[1]
