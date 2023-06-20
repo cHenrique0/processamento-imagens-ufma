@@ -53,17 +53,17 @@ def segmentBottleCap(image):
 
 
 # Carregando a imagem contendo a tampa da garrafa PET
-# img = cv2.imread("./images/tampa_fundo_azul.jpeg")
-img = cv2.imread("./images/tampa_fundo_preto.jpeg")
+img = cv2.imread("./images/tampa_fundo_azul.jpeg")
+# img = cv2.imread("./images/tampa_fundo_preto.jpeg")
 
 # Segmentando a tampa da garrafa PET na imagem usando a função criada
 imSeg = segmentBottleCap(img.copy())
 
 # Exibindo as imagens
-plt.figure("Imagem original")
+plt.figure("Imagem original", figsize=(7, 15))
 plt.axis("off")
 plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-plt.figure("Capturando a tampa da garrafa PET")
+plt.figure("Capturando a tampa da garrafa PET", figsize=(7, 15))
 plt.axis("off")
 plt.imshow(cv2.cvtColor(imSeg, cv2.COLOR_BGR2RGB))
 plt.show()
