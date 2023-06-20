@@ -58,17 +58,36 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 # Equalizando o histograma da imagem
 outputImg = equalizeHist(gray)
 
+# Canais da imagem original
+channels = cv2.split(img)
+colors = ("b", "g", "r")
+
 # Exibindo a imagem original, a equalizada e seus respectivos histogramas
-plt.figure("Imagem original", figsize=(15, 10))
-plt.subplot(1, 2, 1)
+figure1 = plt.figure(figsize=(15, 10), layout="constrained")
+grid1 = figure1.add_gridspec(2, 2)
+
+figure1.add_subplot(grid1[:, 0])
+plt.title("Imagem original")
+plt.axis("off")
 plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-plt.subplot(1, 2, 2)
+figure1.add_subplot(grid1[0, 1])
+plt.title("Histograma RGB")
+for (channel, color) in zip(channels, colors):
+    hist = calcHist(channel)
+    plt.plot(hist, color=color)
+    plt.xlim([0, 256])
+figure1.add_subplot(grid1[1, 1])
+plt.title("Histograma grayscale")
 plt.hist(gray.ravel(), 256, [0, 256], edgecolor="black")
 
-plt.figure("Imagem equalizada", figsize=(15, 10))
-plt.subplot(1, 2, 1)
+figure2 = plt.figure(figsize=(15, 10), layout="constrained")
+grid2 = figure2.add_gridspec(1, 2)
+figure2.add_subplot(grid2[0, 0])
+plt.title("Imagem equalizada")
+plt.axis("off")
 plt.imshow(outputImg, cmap="gray")
-plt.subplot(1, 2, 2)
+figure2.add_subplot(grid2[0, 1])
+plt.title("Histograma grayscale")
 plt.hist(outputImg.ravel(), 256, [0, 256], edgecolor="black")
 
 plt.show()
