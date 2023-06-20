@@ -2,6 +2,9 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
+# Centro do objeto
+cx, cy = 0, 0
+
 
 def segmentBottleCap(image):
     # Convertendo a imagem para o espaço de cores HSV
@@ -36,15 +39,18 @@ def segmentBottleCap(image):
         x, y, w, h = cv2.boundingRect(maxContour)
 
         # Desenhando um retângulo delimitador ao redor do objeto
-        cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 5)
 
         # Calculando o centro do objeto
         centerX = x + w // 2
         centerY = y + h // 2
 
+        global cx, cy
+        cx, cy = centerX, centerY
+
         # Desenhando uma cruz no centro do objeto
-        cv2.drawMarker(image, (centerX, centerY), (0, 255, 0), markerType=cv2.MARKER_CROSS, markerSize=10,
-                       thickness=2)
+        cv2.drawMarker(image, (centerX, centerY), (0, 255, 0), markerType=cv2.MARKER_CROSS, markerSize=30,
+                       thickness=5)
 
         # Exibindo as coordenadas do objeto
         print(f"Coordenadas X,Y do objeto: ({centerX}, {centerY})")
@@ -60,10 +66,17 @@ img = cv2.imread("./images/tampa_fundo_azul.jpeg")
 imSeg = segmentBottleCap(img.copy())
 
 # Exibindo as imagens
-plt.figure("Imagem original", figsize=(7, 15))
+figure = plt.figure(figsize=(15, 10), layout="constrained")
+grid = figure.add_gridspec(1, 2)
+
+figure.add_subplot(grid[0, 0])
+plt.title("Imagem original")
 plt.axis("off")
 plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-plt.figure("Capturando a tampa da garrafa PET", figsize=(7, 15))
+figure.add_subplot(grid[0, 1])
+plt.title("Imagem segmentada")
 plt.axis("off")
 plt.imshow(cv2.cvtColor(imSeg, cv2.COLOR_BGR2RGB))
+plt.text(cx+90, cy-90, f"({cx}, {cy})", fontsize=20, color="#00ff00")
+
 plt.show()
