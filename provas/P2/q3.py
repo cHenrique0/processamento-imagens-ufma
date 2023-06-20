@@ -3,10 +3,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 # Carregando a imagem
-image = cv2.imread('./images/WhiteHorse.jpg')
+img = cv2.imread('./images/WhiteHorse.jpg')
 
 # Convertendo para escala de cinza
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # Aplicando a limiarização
 threshold = 150  # limiar
@@ -23,13 +23,13 @@ maxContour = max(contours, key=cv2.contourArea)
 x, y, w, h = cv2.boundingRect(maxContour)
 
 # Desenhando o retângulo ao redor do animal
-cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 255), 2)
+cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 255), 2)
 
 # Mostrando as imagens
-plt.figure()
+plt.figure("Imagem original", figsize=(6.8, 15), position=(0, 0))
 plt.axis('off')
-plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
-plt.figure()
+plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+plt.figure("Imagem segmentada", figsize=(6.8, 15))
 plt.axis('off')
 plt.imshow(thresh, cmap='gray')
 plt.show()
