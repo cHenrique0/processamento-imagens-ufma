@@ -63,7 +63,7 @@ plt.figure("Imagem original", figsize=(15, 10))
 plt.subplot(1, 2, 1)
 plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
 plt.subplot(1, 2, 2)
-plt.hist(img.ravel(), 256, [0, 256], edgecolor="black")
+plt.hist(gray.ravel(), 256, [0, 256], edgecolor="black")
 
 plt.figure("Imagem equalizada", figsize=(15, 10))
 plt.subplot(1, 2, 1)
