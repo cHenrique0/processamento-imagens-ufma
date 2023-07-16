@@ -29,7 +29,6 @@ def filtro_passa_alta(img, freq_corte):
     return img_filtrada
 
 
-# Carrega aigem
 # Carrega a imagem em escala de cinza
 img = cv2.imread('./images/camera.tif', 0)
 
@@ -37,7 +36,7 @@ img = cv2.imread('./images/camera.tif', 0)
 freq_corte = 20
 img_filtrada = filtro_passa_alta(img, freq_corte)
 
-# Eibe a imagem original e a imagem filtrada
+# Mostra imagem original e a imagem filtrada
 plt.subplot(1, 2, 1), plt.imshow(img, cmap='gray')
 plt.title('Imagem original'), plt.xticks([]), plt.yticks([])
 plt.subplot(1, 2, 2), plt.imshow(img_filtrada, cmap='gray')
