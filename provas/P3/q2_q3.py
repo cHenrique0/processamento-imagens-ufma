@@ -10,6 +10,7 @@ f = img / 255  # Normaliza a imagem
 # Transformada de Fourier
 F = np.fft.fft2(f)
 fShift = np.fft.fftshift(F)
+magnitude = 20*np.log(np.abs(fShift))
 
 # laplaciano
 P, Q = F.shape
@@ -25,6 +26,7 @@ Lap = np.real(np.fft.ifft2(Lap))
 oldRange = np.max(Lap) - np.min(Lap)
 newRange = 1 - -1
 LapScaled = (((Lap - np.min(Lap)) * newRange) / oldRange) + -1
+
 c = -1
 g = f + c*LapScaled
 g = np.clip(g, 0, 1)
