@@ -26,7 +26,7 @@ x, y, w, h = cv2.boundingRect(maxContour)
 cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 255), 2)
 
 # Mostrando as imagens
-plt.figure("Imagem original", figsize=(6.8, 15), position=(0, 0))
+plt.figure("Imagem original", figsize=(6.8, 15))
 plt.axis('off')
 plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
 plt.figure("Imagem segmentada", figsize=(6.8, 15))
